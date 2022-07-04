@@ -8,6 +8,7 @@
 <body>
   <main>
     {% block content %}
+    {% csrf_token %}
     {% endblock %}
   </main>
 </body>
