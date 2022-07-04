@@ -1,1 +1,12 @@
-{{ text }}
+{% extends 'base.html' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+<h2>Posts</h2>
+<form method="get">
+  {% csrf_token %}
+  {{ text }}
+<!--  <button type="submit">Log In</button>-->
+</form>
+{% endblock %}

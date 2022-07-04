@@ -2,7 +2,6 @@
 {% extends 'base.html' %}
 {% csrf_token %}
 {% block title %}Home{% endblock %}
-
 {% block content %}
 {% if user.is_authenticated %}
   Hi {{ user.username }}!
@@ -12,3 +11,4 @@
   <a href="{% url 'login' %}">Log In</a>
 {% endif %}
 {% endblock %}
+
