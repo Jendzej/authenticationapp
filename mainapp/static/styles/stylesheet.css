@@ -1,0 +1,27 @@
+html {
+    font-family: "Helvetica", "Verdana", sans-serif;
+    background-color: #E6F2FF;
+}
+
+h2 {
+    color: #660033;
+}
+
+button {
+    background-color: #FFE6E6;
+    padding: 13px 25px;
+    text-align: center;
+    cursor: pointer;
+    margin: 10px 5px;
+}
+
+input {
+    background-color: #B3D9FF;
+    text-align: left;
+}
+
+.logo_img {
+    margin: auto;
+    display: block;
+    width: 250px;
+}
