@@ -1,0 +1,16 @@
+{% extends 'posts/posts_base.html' %}
+{% load static %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<form method="POST">
+    <article>
+        {% csrf_token %}
+        {{ form.text }}
+        <button>
+            Submit
+        </button>
+    </article>
+</form>
+{% endif %}
+{% endblock %}

@@ -1,7 +1,6 @@
 html {
     font-family: "Helvetica", "Verdana", sans-serif;
     background-color: #E6F2FF;
-    text-align: center;
 }
 
 h2 {
@@ -25,4 +24,12 @@ input {
     margin: auto;
     display: block;
     width: 30%;
+    grid-area: header;
+}
+
+.posts_img {
+    margin: auto;
+    display: block;
+    width: 20%;
+    grid-area: header;
 }
