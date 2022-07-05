@@ -1,9 +1,8 @@
-FROM python:3.10.5
-COPY . .
+FROM python:3.10.5-slim
 WORKDIR /mainapp
+COPY . .
 RUN python -m pip install pipenv
 RUN pipenv install
-CMD pipenv shell
-CMD pipenv run python manage.py migrate
-CMD pipenv run python manage.py runserver 0.0.0.0:8000
+RUN pipenv run python mainapp/manage.py migrate
 EXPOSE 8000
+CMD ["pipenv", "run", "python", "mainapp/manage.py", "runserver"]
