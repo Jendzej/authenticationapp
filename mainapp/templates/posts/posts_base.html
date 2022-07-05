@@ -1,0 +1,15 @@
+{% load static %}
+<html>
+    <head>
+        {% block title %}Posts{% endblock %}
+        {% block content %}
+        <link rel="stylesheet" href="{% static 'styles/stylesheet.css' %}">
+    </head>
+
+    <body>
+        <img src="{% static 'images/logo.png' %}" class="logo_img"><br>
+        <div id="posts_grp" class="single_post">
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
