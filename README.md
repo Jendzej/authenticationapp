@@ -17,4 +17,5 @@ Follow this steps to run app:
 
     'py manage.py runserver' or 'python manage.py runserver'
 
-If you passed the steps correctly, app should work at this url : 'http:127.0.0.1:8000/'
+If you passed the steps correctly, app should work at this url : 'http:127.0.0.1:8000/'\
+To sign up new user enter : 'http:127.0.0.1:8000/accounts/signup'
