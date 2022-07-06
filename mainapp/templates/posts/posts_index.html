@@ -3,8 +3,8 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<form method="POST">
-    <article>
+<div class="posts_page">
+    <form method="POST">
         <div class="adding_menu">
             {% csrf_token %}
             <form method="post">
@@ -22,22 +22,27 @@
                 Submit
             </button>
         </div>
-    </article>
-    <article>
-        <div class="single_post">
+    </form>
+        <div id="single_post">
+        {% block list_posts %}
             {% for post in list_of_posts %}
-                {{ post.title }}<br>
-                {{ post.user }} <br>
-                {{ post.content }}<br>
+                <div class="one_post">
+                    <div class="title_and_author_of_post">
+                        {{ post.title }}  written by: {{ post.user }}
+                    </div>
+                    <div class="content_of_post">
+                        {{ post.content }}
+                    </div>
+                </div>
             {% endfor %}
+        {% endblock %}
         </div>
-    </article>
-</form>
-
-
+</div>
+{% else %}
+<div class="not_auth">
+    If you want to view or public posts, sing in or sign up!
+</div>
 
 {% endif %}
-    <div>
 
-    </div>
 {% endblock %}

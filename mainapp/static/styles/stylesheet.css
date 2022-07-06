@@ -15,7 +15,7 @@ button {
     margin: 10px 5px;
     border-radius: 10px;
     border: 1px solid #ccc;
-    width: 10%;
+    /*width: 10%;*/
 }
 
 input {
@@ -28,7 +28,7 @@ input {
 
 .logo_img {
     margin: auto;
-    display: grid;
+    display: inline;
     width: 30%;
     grid-area: header;
 }
@@ -41,15 +41,56 @@ input {
     grid-area: header;
 }
 
+.posts_page {
+    display: grid;
+    grid-template-columns: minmax(auto, 400px);
+    /*grid-gap: 10px;*/
+    grid-auto-rows: minmax(100px, auto);
+}
+
 .post_add {
-    width: 30%;
+    grid-colmn: 1 / 2;
+    grid-row: 1 / 2;
+    /*width: 40%;*/
     padding: 15px 20px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-sizing: border-box;
+    display: inline-block;
 }
 
-.single_post {
+#single_post {
+    grid-column: 2;
+    grid-row: auto;
     margin: 20px 20px;
+    padding: 20px 20px;
+    /*transform: translate(70%);*/
+}
+
+ul {
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #E6F2FF;
+}
+
+li {
+    /*float: left;*/
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 5px 5px;
+    text-decoration: none;
+}
+
+.one_post {
+    padding: 10px 10px;
+}
+
+.not_auth {
+    text-align: center;
+    font-size: 20px;
 }

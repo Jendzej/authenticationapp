@@ -10,7 +10,7 @@ def index(request):
         form = PostForm(request.POST)
         if form.is_valid():
             form = form.save(commit=False)
-            form.user = request.user.id
+            form.user = request.user
             form.save()
             return render(request, 'posts/posts_index.html')
     else:

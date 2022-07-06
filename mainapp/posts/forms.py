@@ -7,6 +7,6 @@ class PostForm(ModelForm):
         model = ModelPost
         fields = ['title', 'content']
         widgets = {
-            'title': TextInput(attrs={'class': "post_add", 'placeholder': 'title'}),
-            'content': TextInput(attrs={'class': "post_add", 'placeholder': 'Content of the post'})
+            'title': TextInput(attrs={'class': "post_add", 'placeholder': 'Title of your post'}),
+            'content': TextInput(attrs={'class': "post_add", 'placeholder': 'Content of your post'})
         }
