@@ -13,14 +13,14 @@
             Logged as <i><b>{{ user.username }}</b></i><br>
         <li>
             <a href="{% url 'logout' %}">
-                <button>
+                <button class="button_main_page">
                     Log out
                 </button>
             </a>
         </li>
         <li>
             <a href="{% url 'posts' %}">
-                <button>
+                <button class="button_main_page">
                     Posts
                 </button>
             </a>
@@ -28,14 +28,14 @@
         {% else %}
         <li>
             <a href="{% url 'login' %}">
-                <button>
+                <button class="button_main_page">
                     Log in
                 </button>
             </a><br>
         </li>
         <li>
             <a href="{% url 'signup' %}">
-                <button>
+                <button class="button_main_page">
                     Sign up
                 </button>
             </a>

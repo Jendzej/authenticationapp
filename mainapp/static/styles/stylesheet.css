@@ -114,3 +114,11 @@ span a {
     position: sticky;
     top: 0;
 }
+
+.button_main_page {
+    width: 10%;
+}
+
+#id_username, #id_password {
+    width:10%;
+}
