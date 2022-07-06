@@ -5,28 +5,32 @@
 {% if user.is_authenticated %}
 <form method="POST">
     <article>
-        {% csrf_token %}
-        <form class="adding_post" method="post">
+        <div class="adding_menu">
             {% csrf_token %}
-            {% for field in form %}
-                <div class="post_tag">
-                    {{ field.label_tag }}<br>
-                </div>
-                <div class="adding_post">
-                    {{ field }} <br>
-                </div>
-            {% endfor %}
-        </form>
-        <button>
-            Submit
-        </button>
-    {% for post in list_of_posts %}
-        <div class="single_post">
-            {{ post.title }}<br>
-            {{ post.user }} <br>
-            {{ post.content }}<br>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="post_tag">
+                        {{ field.label_tag }}<br>
+                    </div>
+                    <div class="adding_post">
+                        {{ field }} <br>
+                    </div>
+                {% endfor %}
+            </form>
+            <button>
+                Submit
+            </button>
         </div>
-    {% endfor %}
+    </article>
+    <article>
+        <div class="single_post">
+            {% for post in list_of_posts %}
+                {{ post.title }}<br>
+                {{ post.user }} <br>
+                {{ post.content }}<br>
+            {% endfor %}
+        </div>
     </article>
 </form>
 
