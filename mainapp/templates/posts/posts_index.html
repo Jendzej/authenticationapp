@@ -28,7 +28,7 @@
             {% for post in list_of_posts %}
                 <div class="one_post">
                     <div class="title_and_author_of_post">
-                        {{ post.title }}  written by: {{ post.user }}
+                        <span><b>{{ post.title }}</b> <a>written by:</a> {{ post.user }}</span>
                     </div>
                     <div class="content_of_post">
                         {{ post.content }}

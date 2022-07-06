@@ -1,5 +1,5 @@
 html {
-    font-family: "Helvetica", "Verdana", sans-serif;
+    font-family:"Trebuchet MS", "Trebuchet MS";
     background-color: #E6F2FF;
 }
 
@@ -8,6 +8,7 @@ h2 {
 }
 
 button {
+    font-family:"Trebuchet MS", "Trebuchet MS";
     background-color: #FFE6E6;
     padding: 13px 25px;
     text-align: center;
@@ -24,6 +25,7 @@ input {
     border-radius: 10px;
     padding: 5px 5px;
     border: 1px solid #ccc;
+    font-family:"Trebuchet MS", "Trebuchet MS";
 }
 
 .logo_img {
@@ -57,7 +59,6 @@ input {
     border: 1px solid #ccc;
     border-radius: 10px;
     box-sizing: border-box;
-    display: inline-block;
 }
 
 #single_post {
@@ -65,7 +66,7 @@ input {
     grid-row: auto;
     margin: 20px 20px;
     padding: 20px 20px;
-    /*transform: translate(70%);*/
+    /*transform: translate(15%);*/
 }
 
 ul {
@@ -88,9 +89,28 @@ li {
 
 .one_post {
     padding: 10px 10px;
+    margin: 5px 5px;
+    border-radius: 10px;
+    border: 1px solid lightblue;
+    width: 70%;
+
+
 }
 
 .not_auth {
     text-align: center;
     font-size: 20px;
+}
+
+span b {
+    font-size: large;
+}
+span a {
+    color: gray;
+}
+
+.adding_menu {
+    display: inline-block;
+    position: sticky;
+    top: 0;
 }
