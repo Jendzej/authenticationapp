@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from .forms import PostForm
+from django.http import HttpResponse
+from .models import ModelPost
+from django.template import loader
 
 
 def index(request):
@@ -14,4 +17,10 @@ def index(request):
         form = PostForm()
 
     context = {'form': form}
+    return render(request, 'posts/posts_index.html', context)
+
+
+def posts(request):
+    list_of_posts = ModelPost.objects.all().values()
+    context = {'list_of_posts': list_of_posts}
     return render(request, 'posts/posts_index.html', context)

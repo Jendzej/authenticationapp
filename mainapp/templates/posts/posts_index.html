@@ -6,11 +6,34 @@
 <form method="POST">
     <article>
         {% csrf_token %}
-        {{ form.text }}
+        <form class="adding_post" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="post_tag">
+                    {{ field.label_tag }}<br>
+                </div>
+                <div class="adding_post">
+                    {{ field }} <br>
+                </div>
+            {% endfor %}
+        </form>
         <button>
             Submit
         </button>
+    {% for post in list_of_posts %}
+        <div class="single_post">
+            {{ post.title }}<br>
+            {{ post.user }} <br>
+            {{ post.content }}<br>
+        </div>
+    {% endfor %}
     </article>
 </form>
+
+
+
 {% endif %}
+    <div>
+
+    </div>
 {% endblock %}

@@ -13,23 +13,39 @@ button {
     text-align: center;
     cursor: pointer;
     margin: 10px 5px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 10%;
 }
 
 input {
     background-color: #B3D9FF;
     text-align: left;
+    border-radius: 10px;
+    padding: 5px 5px;
+    border: 1px solid #ccc;
 }
 
 .logo_img {
     margin: auto;
-    display: block;
+    display: grid;
     width: 30%;
     grid-area: header;
 }
 
 .posts_img {
     margin: auto;
-    display: block;
+    display: grid;
     width: 20%;
     grid-area: header;
+}
+
+.post_add {
+    width: 30%;
+    padding: 15px 20px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
 }

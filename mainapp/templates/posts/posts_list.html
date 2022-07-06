@@ -1,0 +1,13 @@
+{% extends 'posts/posts_base.html' %}
+{% load static %}
+{% block content %}
+
+    {% for post in list_of_posts %}
+        <div class="single_post">
+            {{ post.title }}<br>
+            {{ post.user }} <br>
+            {{ post.content }}<br>
+        </div>
+    {% endfor %}
+
+{% endblock %}

@@ -1,11 +1,12 @@
 from django.forms import ModelForm, TextInput
-from .models import Post
+from .models import ModelPost
 
 
 class PostForm(ModelForm):
     class Meta:
-        model = Post
-        fields = ['text']
+        model = ModelPost
+        fields = ['title', 'content']
         widgets = {
-            'text': TextInput(attrs={'class': "input", 'placeholder': 'Type smth...'})
+            'title': TextInput(attrs={'class': "post_add", 'placeholder': 'title'}),
+            'content': TextInput(attrs={'class': "post_add", 'placeholder': 'Content of the post'})
         }
