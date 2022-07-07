@@ -40,7 +40,8 @@
                     <div class="comment_list">
                         {% for comm in comment %}
                             {% if comm.post_id == post.id %}
-                                {{ comm.content }}
+                                {{ comm.content }}<br>
+
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -48,6 +49,7 @@
                         <form method="post">
                             {% csrf_token %}
                             {{ comment_form.content }}
+                            {{ comment_form.post }}
                             <button type="submit">
                                 Submit
                             </button>
