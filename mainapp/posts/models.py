@@ -27,7 +27,6 @@ class ModelPost(models.Model):
 
 
 class Comment(models.Model):
-    # user = models.TextField()
     name = models.TextField()
     content = models.TextField()
     post = models.ForeignKey(ModelPost, on_delete=models.CASCADE, related_name="comments")

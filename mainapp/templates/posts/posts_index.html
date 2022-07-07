@@ -37,12 +37,21 @@
                     <div class="content_of_post">
                         {{ post.content }}
                     </div>
-                    <div>
+                    <div class="comment_list">
                         {% for comm in comment %}
                             {% if comm.post_id == post.id %}
                                 {{ comm.content }}
                             {% endif %}
                         {% endfor %}
+                    </div>
+                    <div class="add_comment">
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ comment_form.content }}
+                            <button type="submit">
+                                Submit
+                            </button>
+                        </form>
                     </div>
                 </div>
             {% endfor %}

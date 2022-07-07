@@ -14,14 +14,23 @@ def index(request):
             form.user = request.user
             form.save()
             return render(request, 'posts/posts_index.html')
+        comment_form = PostComment(request.POST)
+        if comment_form.is_valid():
+            comment_form = comment_form.save(commit=False)
+            comment_form.post = ModelPost
+            comment_form.name = request.user
+            comment_form.save()
+            return render(request, 'posts/posts_index.html')
     else:
         form = PostForm()
+        comment_form = PostComment()
 
     list_of_posts = ModelPost.objects.all().values()
     comment = Comment.objects.all().values()
     context = {
         'form': form,
         'list_of_posts': list_of_posts,
+        'comment_form': comment_form,
         'comment': comment,
     }
     return render(request, 'posts/posts_index.html', context)
