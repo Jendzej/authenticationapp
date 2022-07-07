@@ -4,10 +4,12 @@
 
 {% if user.is_authenticated %}
 <div class="posts_page">
+
     <form method="POST">
         <div class="adding_menu">
             {% csrf_token %}
             <form method="post">
+                <h2>Write a post</h2>
                 {% csrf_token %}
                 {% for field in form %}
                     <div class="post_tag">
@@ -23,26 +25,30 @@
             </button>
         </div>
     </form>
+
         <div id="single_post">
         {% block list_posts %}
             {% for post in list_of_posts %}
                 <div class="one_post">
                     <div class="title_and_author_of_post">
-                        <span><b>{{ post.title }}</b> <a>written by:</a> {{ post.user }}</span>
+                        <span><b>{{ post.title }}</b> <a>written by:</a> <i>{{ post.user }}</i></span>
                     </div>
+
                     <div class="content_of_post">
                         {{ post.content }}
+                    </div>
+                    <div>
+                        {% for comm in comment %}
+                            {% if comm.post_id == post.id %}
+                                {{ comm.content }}
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             {% endfor %}
         {% endblock %}
         </div>
 </div>
-{% else %}
-<div class="not_auth">
-    If you want to view or public posts, sing in or sign up!
-</div>
-
 {% endif %}
 
 {% endblock %}

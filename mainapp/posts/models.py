@@ -5,7 +5,7 @@ from django.urls import reverse
 
 
 class ModelPost(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=50)
     slug = models.SlugField(unique=True, max_length=255)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
@@ -27,9 +27,14 @@ class ModelPost(models.Model):
 
 
 class Comment(models.Model):
-    name = models.CharField(max_length=42)
-    email = models.EmailField(max_length=75)
-    website = models.URLField(max_length=200, null=True, blank=True)
+    # user = models.TextField()
+    name = models.TextField()
     content = models.TextField()
-    post = models.ForeignKey(ModelPost, on_delete=models.CASCADE)
+    post = models.ForeignKey(ModelPost, on_delete=models.CASCADE, related_name="comments")
     created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return self.content
