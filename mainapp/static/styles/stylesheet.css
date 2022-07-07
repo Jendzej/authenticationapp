@@ -4,8 +4,12 @@ html {
     background-color: #E6F2FF;
 }
 
-h2 {
+h2, h4 {
     color: #660033;
+}
+
+h4 {
+    margin: 20px 5px 10px 10px;
 }
 
 button {
@@ -136,9 +140,20 @@ span a {
     width: 6%;
 }
 
-.comment_list {
-    padding: 10px 10px;
-    margin: 5px 5px;
-    border-radius: 10px;
-    border: 1px solid lightblue;
+.single_comm {
+    border-bottom: 1px solid lightblue;
+    font-size: 13px;
+    margin: auto 10px;
+}
+
+button.sub_comm {
+    padding: 10px 20px;
+}
+
+.comment_post {
+    padding: 10px 200px 10px 10px;
+}
+
+.title_and_author_of_post {
+    margin-bottom: 10px;
 }

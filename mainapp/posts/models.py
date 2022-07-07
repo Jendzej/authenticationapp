@@ -2,11 +2,13 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from django.urls import reverse
+import random
+from django.db import IntegrityError
 
 
 class ModelPost(models.Model):
     title = models.CharField(max_length=50)
-    slug = models.SlugField(unique=True, max_length=255)
+    slug = models.SlugField()
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     user = models.TextField()
@@ -15,9 +17,14 @@ class ModelPost(models.Model):
         return reverse('blog_post_detail', args=[self.slug])
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.title)
-        super(ModelPost, self).save(*args, **kwargs)
+        # if not self.slug:
+        #     self.slug = slugify(self.title)
+        # super(ModelPost, self).save(*args, **kwargs)
+        try:
+            self.slug = ''.join(str(random.randint(0, 9)) for _ in range(8))
+            super().save(*args, **kwargs)
+        except IntegrityError:
+            self.save(*args, **kwargs)
 
     class Meta:
         ordering = ['created_on']

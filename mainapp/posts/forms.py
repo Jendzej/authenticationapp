@@ -17,5 +17,6 @@ class PostComment(ModelForm):
         model = Comment
         fields = ['content', 'post']
         widgets = {
-            'content': TextInput(attrs={'class': "comment_post", 'placeholder': 'Write a comment...'})
+            'content': TextInput(attrs={'class': "comment_post", 'placeholder': 'Write a comment...'}),
+
         }

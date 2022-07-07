@@ -8,7 +8,7 @@
     <form method="POST">
         <div class="adding_menu">
             {% csrf_token %}
-            <form method="post">
+
                 <h2>Write a post</h2>
                 {% csrf_token %}
                 {% for field in form %}
@@ -19,7 +19,7 @@
                         {{ field }} <br>
                     </div>
                 {% endfor %}
-            </form>
+
             <button>
                 Submit
             </button>
@@ -38,10 +38,12 @@
                         {{ post.content }}
                     </div>
                     <div class="comment_list">
+                    <h4>Comments:</h4>
                         {% for comm in comment %}
                             {% if comm.post_id == post.id %}
-                                {{ comm.content }}<br>
-
+                                <div class="single_comm">
+                                    <span><a>{{ comm.name }}:</a> {{ comm.content }}</span>
+                                </div>
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -49,8 +51,9 @@
                         <form method="post">
                             {% csrf_token %}
                             {{ comment_form.content }}
-                            {{ comment_form.post }}
-                            <button type="submit">
+                            <input type="hidden" name="post" value="{{ post.id }}">
+
+                            <button type="submit" class="sub_comm" name="sub_comm">
                                 Submit
                             </button>
                         </form>

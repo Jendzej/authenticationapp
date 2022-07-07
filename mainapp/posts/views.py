@@ -17,7 +17,6 @@ def index(request):
         comment_form = PostComment(request.POST)
         if comment_form.is_valid():
             comment_form = comment_form.save(commit=False)
-            # comment_form.post_id = ModelPost.id
             comment_form.name = request.user
             comment_form.save()
             return render(request, 'posts/posts_index.html')
