@@ -1,4 +1,4 @@
-from django.forms import ModelForm, TextInput
+from django.forms import ModelForm, TextInput, Textarea
 from .models import ModelPost, Comment
 
 
@@ -7,8 +7,8 @@ class PostForm(ModelForm):
         model = ModelPost
         fields = ['title', 'content']
         widgets = {
-            'title': TextInput(attrs={'class': "post_add", 'placeholder': 'Title of your post'}),
-            'content': TextInput(attrs={'class': "post_add", 'placeholder': 'Content of your post'})
+            'title': TextInput(attrs={'class': "post_add_t", 'placeholder': 'Title of your post'}),
+            'content': Textarea(attrs={'class': "post_add_c", 'placeholder': 'Content of your post'})
         }
 
 

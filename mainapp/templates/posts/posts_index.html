@@ -4,27 +4,16 @@
 
 {% if user.is_authenticated %}
 <div class="posts_page">
-
-    <form method="POST">
         <div class="adding_menu">
-            {% csrf_token %}
-
                 <h2>Write a post</h2>
-                {% csrf_token %}
-                {% for field in form %}
-                    <div class="post_tag">
-                        {{ field.label_tag }}<br>
-                    </div>
-                    <div class="adding_post">
-                        {{ field }} <br>
-                    </div>
-                {% endfor %}
+                <a href="{% url 'adding' %}">
+                    <button>
+                        Write...
+                    </button>
 
-            <button>
-                Submit
-            </button>
+                </a>
         </div>
-    </form>
+
 
         <div id="single_post">
         {% block list_posts %}

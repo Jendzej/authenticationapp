@@ -12,7 +12,7 @@ h4 {
     margin: 20px 5px 10px 10px;
 }
 
-button {
+button, .sub_input {
     font-family:"Trebuchet MS", "Trebuchet MS";
     background-color: #FFE6E6;
     padding: 13px 25px;
@@ -24,7 +24,7 @@ button {
     /*width: 6%;*/
 }
 
-input {
+input, .post_add_c {
     background-color: #B3D9FF;
     text-align: left;
     border-radius: 10px;
@@ -156,4 +156,23 @@ button.sub_comm {
 
 .title_and_author_of_post {
     margin-bottom: 10px;
+}
+
+.adding_page {
+    text-align: center;
+}
+
+.post_add_t {
+    width: 30%;
+    margin: 20px 20px 20px 20px;
+    text-align: center;
+}
+
+.post_add_c {
+    width: 30%;
+    margin: 20px 20px 20px 20px;
+    height: 200px;
+    line-height: 20px;
+    padding: 10px 10px 10px 10px;
+
 }

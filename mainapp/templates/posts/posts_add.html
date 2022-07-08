@@ -1,0 +1,27 @@
+{% extends 'posts/posts_base.html' %}
+{% load static %}
+{% block content %}
+    <div class="adding_page">
+        <form method="POST" action="{% url 'posts' %}">
+            {% csrf_token %}
+                {% for field in form %}
+                    <div class="add_title">
+                        {{ field.label_tag }}<br>
+                    </div>
+                    <div class="add_content">
+                        {{ field }} <br>
+                    </div>
+                {% endfor %}
+        <input type="submit" value="Submit" class="sub_input" style="width: 6%">
+        </form>
+    </div>
+    <div style="text-align: center">
+    <a href="{% url 'posts' %}">
+        <button style="width: 6%">
+            Posts
+        </button>
+    </a>
+    </div>
+
+
+{% endblock %}
