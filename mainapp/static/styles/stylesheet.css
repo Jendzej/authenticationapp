@@ -143,8 +143,9 @@ span a {
 
 .single_comm {
     border-bottom: 1px solid lightblue;
+    margin: 5px auto 5px 10px;
     font-size: 13px;
-    margin: auto 10px;
+
 }
 
 button.sub_comm {
