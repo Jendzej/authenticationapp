@@ -6,7 +6,7 @@
             {% csrf_token %}
                 {% for field in form %}
                     <div class="add_title">
-                        {{ field.label_tag }}<br>
+                        <br>{{ field.label_tag }}<br>
                     </div>
                     <div class="add_content">
                         {{ field }} <br>

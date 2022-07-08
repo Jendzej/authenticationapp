@@ -4,16 +4,18 @@
 
 {% if user.is_authenticated %}
 <div class="posts_page">
-        <div class="adding_menu">
-                <h2>Write a post</h2>
+    <div>
+            <div class="adding_menu">
+
+                <br><br><h2>Write a post</h2>
                 <a href="{% url 'adding' %}">
                     <button>
                         Write...
                     </button>
-
                 </a>
-        </div>
 
+            </div>
+    </div>
 
         <div id="single_post">
         {% block list_posts %}
@@ -42,7 +44,7 @@
                             {{ comment_form.content }}
                             <input type="hidden" name="post" value="{{ post.id }}">
 
-                            <button type="submit" class="sub_comm" name="sub_comm">
+                            <button class="sub_comm" name="sub_comm">
                                 Submit
                             </button>
                         </form>
