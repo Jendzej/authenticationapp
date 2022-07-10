@@ -33,10 +33,11 @@ def adding_post(request):
             form.user = request.user
             form.save()
             form = PostForm
+
     else:
         form = PostForm()
 
-    context = {
+    form_context = {
         'form': form
     }
-    return render(request, 'posts/posts_add.html', context)
+    return render(request, 'posts/posts_add.html', context=form_context)

@@ -5,10 +5,10 @@ from .models import ModelPost, Comment
 class PostForm(ModelForm):
     class Meta:
         model = ModelPost
-        fields = ['title', 'content']
+        fields = ['title', 'post_content']
         widgets = {
             'title': TextInput(attrs={'class': "post_add_t", 'placeholder': 'Title of your post'}),
-            'content': Textarea(attrs={'class': "post_add_c", 'placeholder': 'Content of your post'})
+            'post_content': Textarea(attrs={'class': "post_add_c", 'placeholder': 'Content of your post'})
         }
 
 

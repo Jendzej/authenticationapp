@@ -9,7 +9,7 @@ from django.db import IntegrityError
 class ModelPost(models.Model):
     title = models.CharField(max_length=50)
     slug = models.SlugField()
-    content = models.TextField()
+    post_content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     user = models.TextField()
 

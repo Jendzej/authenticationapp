@@ -1,9 +1,10 @@
 {% extends 'posts/posts_base.html' %}
 {% load static %}
-{% block post_add %}
+{% block content %}
     <div class="adding_page">
-        <form method="POST" action="{% url 'posts' %}">
-            {% csrf_token %}
+
+            <form method="POST" action="{% url 'posts' %}">
+                {% csrf_token %}
                 <div>
                     {{ form.title.label_tag }}
                 </div>
@@ -11,15 +12,20 @@
                     {{ form.title }}
                 </div>
                 <div>
-                    {{ form.content.label_tag }}
+                    {{ form.post_content.label_tag }}
                 </div>
                 <div>
-                    {{ form.content }}
+                    {{ form.post_content }}
                 </div>
-                <button type="submit" style="width: 6%;">
+                <a href="{% url 'posts' %}">
+                <button style="width: 6%">
                     Submit
                 </button>
-        </form>
+                </a>
+            </form>
+
+
+
     </div>
     <div style="text-align: center">
     <a href="{% url 'posts' %}">
@@ -29,18 +35,4 @@
     </a>
     </div>
 
-{#                {% for field in form %}#}
-{#                    <div class="add_title">#}
-{#                        <br>{{ field.label_tag }}<br>#}
-{#                    </div>#}
-{#                    <div class="add_content">#}
-{#                        {{ field }} <br>#}
-{#                    </div>#}
-{#                {% endfor %}#}
-
-
-{#        <input type="hidden" value="{{ field.content }}" class="sub_input">#}
-{#        <button class="sub_comm" name="sub_comm">#}
-{#            Submit#}
-{#        </button>#}
 {% endblock %}

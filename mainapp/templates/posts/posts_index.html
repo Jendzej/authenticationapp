@@ -1,5 +1,6 @@
 {% extends 'posts/posts_base.html' %}
 {% load static %}
+
 {% block content %}
 
 {% if user.is_authenticated %}
@@ -18,7 +19,7 @@
     </div>
 
         <div id="single_post">
-        {% block list_posts %}
+
             {% for post in list_of_posts %}
                 <div class="one_post">
                     <div class="title_and_author_of_post">
@@ -26,7 +27,7 @@
                     </div>
 
                     <div class="content_of_post">
-                        {{ post.content }}
+                        {{ post.post_content }}
                     </div>
                     <div class="comment_list">
                     <h4>Comments:</h4>
@@ -51,9 +52,9 @@
                     </div>
                 </div>
             {% endfor %}
-        {% endblock %}
         </div>
 </div>
 {% endif %}
+
 
 {% endblock %}
