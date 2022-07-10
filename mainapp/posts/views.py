@@ -1,9 +1,11 @@
+"""Posts app views configuration"""
 from django.shortcuts import render
 from .forms import PostForm, PostComment
 from .models import ModelPost, Comment
 
 
 def posts_page(request):
+    """Configuration of posts page"""
     if request.method == "POST":
         comment_form = PostComment(request.POST)
         if comment_form.is_valid():
@@ -26,6 +28,7 @@ def posts_page(request):
 
 
 def adding_post(request):
+    """configuration of page of adding posts"""
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
