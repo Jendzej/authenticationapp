@@ -45,3 +45,28 @@ def adding_post(request):
         'form': form
     }
     return render(request, 'posts/posts_add.html', context=form_context)
+
+
+def edit_post(request):
+    """configuration of editing posts page"""
+    if request.method == "PUT":
+        form = PostForm(request.PUT)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.save()
+            return redirect('posts')
+
+    else:
+        form = PostForm()
+
+    add_form_context = {
+        'form': form
+    }
+    return render(request, 'posts/posts_edit.html', context=add_form_context)
+
+
+def delete_post(request):
+    """configuration of deleting posts page"""
+    if request.method == "DELETE":
+        post_id = request.GET.get.post_id
+        post_to_delete = PostForm.objects.get(id=post_id)
