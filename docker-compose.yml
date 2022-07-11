@@ -1,0 +1,6 @@
+version: '1'
+services:
+  django_app:
+    image: 'django_app'
+    ports:
+    - 8000:8000
