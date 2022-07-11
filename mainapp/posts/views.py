@@ -1,20 +1,12 @@
-from django.shortcuts import render
+"""Posts app views configuration"""
+from django.shortcuts import render, redirect
 from .forms import PostForm, PostComment
-from django.http import HttpResponse
 from .models import ModelPost, Comment
-from django.template import loader
-from django.shortcuts import get_object_or_404
 
 
-def index(request):
+def posts_page(request):
+    """Configuration of posts page"""
     if request.method == "POST":
-        form = PostForm(request.POST)
-        if form.is_valid():
-            form = form.save(commit=False)
-            form.user = request.user
-            form.save()
-            # return render(request, 'posts/posts_index.html')
-            form = PostForm
         comment_form = PostComment(request.POST)
         if comment_form.is_valid():
             comment_form = comment_form.save(commit=False)
@@ -23,13 +15,11 @@ def index(request):
             # return render(request, 'posts/posts_index.html')
             comment_form = PostComment
     else:
-        form = PostForm()
         comment_form = PostComment()
 
     list_of_posts = ModelPost.objects.all().values()
     comment = Comment.objects.all().values()
     context = {
-        'form': form,
         'list_of_posts': list_of_posts,
         'comment_form': comment_form,
         'comment': comment,
@@ -38,18 +28,20 @@ def index(request):
 
 
 def adding_post(request):
+    """configuration of page of adding posts"""
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
             form = form.save(commit=False)
             form.user = request.user
             form.save()
-
             form = PostForm
+            return redirect('posts')
+
     else:
         form = PostForm()
 
-    context = {
+    form_context = {
         'form': form
     }
-    return render(request, 'posts/posts_add.html', context)
+    return render(request, 'posts/posts_add.html', context=form_context)
