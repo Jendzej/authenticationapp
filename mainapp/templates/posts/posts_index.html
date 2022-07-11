@@ -50,6 +50,17 @@
                             </button>
                         </form>
                     </div>
+                <div class="delete_post">
+                <form method="delete">
+                    {% csrf_token %}
+                    <input name="post_id" type="hidden" value="{{ post.id }}">
+                    <button type="submit">
+                        Delete post
+                    </button>
+                </form>
+                </div>
+
+
                 </div>
             {% endfor %}
         </div>

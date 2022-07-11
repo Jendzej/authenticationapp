@@ -65,8 +65,8 @@ def edit_post(request):
     return render(request, 'posts/posts_edit.html', context=add_form_context)
 
 
-def delete_post(request):
+def delete_post(request, post_id=None):
     """configuration of deleting posts page"""
-    if request.method == "DELETE":
-        post_id = request.GET.get.post_id
-        post_to_delete = PostForm.objects.get(id=post_id)
+    post_to_delete = PostForm.objects.get(id=post_id)
+    post_to_delete.delete()
+    return render(request, 'posts/posts_index.html')
