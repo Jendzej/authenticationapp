@@ -1,5 +1,5 @@
 """Posts app views configuration"""
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import PostForm, PostComment
 from .models import ModelPost, Comment
 
@@ -36,6 +36,7 @@ def adding_post(request):
             form.user = request.user
             form.save()
             form = PostForm
+            return redirect('posts')
 
     else:
         form = PostForm()
