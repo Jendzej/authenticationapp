@@ -5,4 +5,4 @@ services:
     ports:
     - 8000:8000
     volumes:
-      - ../db.sqlite3:/mainapp/db.sqlite3
+      - ./mainapp/db.sqlite3:/mainapp/db.sqlite3
