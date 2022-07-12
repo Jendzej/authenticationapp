@@ -28,6 +28,9 @@
                         <a href="{% url 'edit' post.id %}">
                             <img src="{% static 'images/edit.png' %}" class="edit_images">
                         </a>
+                        <a href="{% url 'get_pdf' post.id %}">
+                            <img src="{% static 'images/download.png' %}" class="edit_images">
+                        </a>
                     </div>
                     <div class="title_and_author_of_post">
                         <span><b>{{ post.title }}</b> <a>written by:</a> <i>{{ post.user }}</i></span>

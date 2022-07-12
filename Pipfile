@@ -8,6 +8,7 @@ django = "*"
 django-createsuperuserwithpassword = "*"
 python-dotenv = "*"
 pillow = "*"
+reportlab = "*"
 
 [dev-packages]
 pylint = "*"

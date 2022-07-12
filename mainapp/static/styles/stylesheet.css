@@ -199,9 +199,13 @@ button.sub_comm {
 }
 .edit_images {
     height: 20px;
+    padding: 5px 5px;
 }
 
 .post_image {
     max-height: 300px;
     max-width: 55%;
+    display: block;
+    margin: auto;
+    padding: 20px 20px;
 }

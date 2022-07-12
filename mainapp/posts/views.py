@@ -2,6 +2,11 @@
 from django.shortcuts import render, redirect
 from .forms import PostForm, PostComment
 from .models import ModelPost, Comment
+from django.http import FileResponse
+from reportlab.pdfgen import canvas
+import io
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
 
 
 def posts_page(request):
@@ -81,3 +86,47 @@ def edit_post(request, post_id=None):
         'post_form': post_form
     }
     return render(request, 'posts/posts_edit.html', context)
+
+
+def get_pdf(request, post_id=None):
+    """Getting pdf view"""
+    buf = io.BytesIO()
+    c = canvas.Canvas(buf, pagesize=letter, bottomup=0)
+    textob = c.beginText()
+    textob.setTextOrigin(inch, inch)
+    textob.setFont('Helvetica', 14)
+
+    # lines = [
+    #     ""
+    # ]
+    # for line in lines:
+    #     textob.textLine(line)
+    post_to_print = ModelPost.objects.get(id=post_id)
+    # comments = []
+    # for comment in post_to_print.comments.values():
+    #     comments.append(comment)
+    # lines = [
+    #     f"Post Title: {post_to_print.title}",
+    #     f"Author: {post_to_print.user}",
+    #     f"Post content: {post_to_print.post_content}",
+    #     str(comments),
+    #     f" ===== "
+    # ]
+    comments = []
+    for comment in Comment.objects.all().values_list('content'):
+        # for key, data in comment:
+        #     print(key)
+        #     comments.append(data)
+        comments.append(str(comment).replace("(", "").replace(")", ""))
+    textob.textLine(f"Post Title: {post_to_print.title}")
+    textob.textLine(f"Author: {post_to_print.user}")
+    textob.textLine(f"Post content: {post_to_print.post_content}")
+    textob.textLine("Comments:")
+    for comm in comments:
+        textob.textLine(f"- {comm}")
+    c.drawText(textob)
+    c.showPage()
+    c.save()
+    buf.seek(0)
+
+    return FileResponse(buf, as_attachment=True, filename='doc.pdf')
