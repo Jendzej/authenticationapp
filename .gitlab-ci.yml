@@ -20,4 +20,5 @@ migrations:
 django-tests:
   stage: test
   script:
-    - python mainapp/manage.py test
+    - cd mainapp
+    - python manage.py test
