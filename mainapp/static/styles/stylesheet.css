@@ -192,3 +192,11 @@ button.sub_comm {
     text-align: center;
     font-size: 20px;
 }
+
+.edit_post {
+    float: right;
+    padding: 3px 5px;
+}
+.edit_images {
+    height: 20px;
+}

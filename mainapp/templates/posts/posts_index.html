@@ -22,6 +22,14 @@
 
             {% for post in list_of_posts %}
                 <div class="one_post">
+                    <div class="edit_post">
+                        <a href="{% url 'delete' post.id %}">
+                            <img src="{% static 'images/delete.png' %}" class="edit_images">
+                        </a>
+                        <a href="{% url 'edit' post.id %}">
+                            <img src="{% static 'images/edit.png' %}" class="edit_images">
+                        </a>
+                    </div>
                     <div class="title_and_author_of_post">
                         <span><b>{{ post.title }}</b> <a>written by:</a> <i>{{ post.user }}</i></span>
                     </div>
@@ -50,14 +58,7 @@
                             </button>
                         </form>
                     </div>
-                <div class="delete_post">
-                    <a href="{% url 'delete' post.id %}">
-                        Delete post
-                    </a>
-                    <a href="{% url 'edit' post.id %}">
-                        Edit post
-                    </a>
-                </div>
+
 
 
                 </div>
