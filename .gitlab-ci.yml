@@ -4,6 +4,7 @@ default:
     paths:
       - ~/.cache/pip/
   before_script:
+    - dir
     - cd django_application
     - cd mainapp
     - python -m pip install -r requirements.txt
