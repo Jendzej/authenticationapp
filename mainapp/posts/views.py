@@ -71,6 +71,8 @@ def delete_post(request, post_id=None):
     if request.method == "POST":
         post_to_delete.delete()
         return redirect('posts')
+    elif "button_no" in str(request):
+        return redirect('posts')
     context = {
         'post_id': post_id,
         'post_to_delete': post_to_delete
