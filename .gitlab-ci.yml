@@ -4,6 +4,9 @@ default:
     paths:
       - ~/.cache/pip/
   before_script:
+    - docker build . -t django_app
+    - docker-compose up -p django_application
+    - cd django_application
     - cd mainapp
     - python -m pip install -r requirements.txt
 
