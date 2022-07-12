@@ -9,9 +9,15 @@ default:
 
 
 migrations:
-  stage: migrations_test
+  stage: build
   script:
     - cd mainapp
     - python manage.py makemigrations
     - python manage.py migrate
     - python manage.py check
+
+django-tests:
+  stage: test
+  script:
+    - cd mainapp
+    - python manage.py test
