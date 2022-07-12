@@ -7,6 +7,7 @@ name = "pypi"
 django = "*"
 django-createsuperuserwithpassword = "*"
 python-dotenv = "*"
+pillow = "*"
 
 [dev-packages]
 pylint = "*"

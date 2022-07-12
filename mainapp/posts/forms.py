@@ -8,7 +8,7 @@ class PostForm(ModelForm):
     class Meta:
         """Meta config"""
         model = ModelPost
-        fields = ['title', 'post_content']
+        fields = ['title', 'post_content', 'image']
         widgets = {
             'title': TextInput(attrs={
                 'class': "post_add_t",

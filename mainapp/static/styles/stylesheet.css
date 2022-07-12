@@ -200,3 +200,8 @@ button.sub_comm {
 .edit_images {
     height: 20px;
 }
+
+.post_image {
+    max-height: 300px;
+    max-width: 55%;
+}

@@ -30,19 +30,23 @@ def posts_page(request):
 def adding_post(request):
     """configuration of page of adding posts"""
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             form = form.save(commit=False)
             form.user = request.user
+            if len(request.FILES) != 0:
+                form.image = request.FILES['image']
+                print(request.FILES)
             form.save()
             form = PostForm
             return redirect('posts')
 
     else:
         form = PostForm()
-
+    img_obj = form.instance
     form_context = {
-        'form': form
+        'form': form,
+        'img_obj': img_obj
     }
     return render(request, 'posts/posts_add.html', context=form_context)
 

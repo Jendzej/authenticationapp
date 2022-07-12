@@ -1,6 +1,5 @@
 {% extends 'posts/posts_base.html' %}
 {% load static %}
-
 {% block content %}
 
 {% if user.is_authenticated %}
@@ -37,6 +36,11 @@
                     <div class="content_of_post">
                         {{ post.post_content }}
                     </div>
+                <div>
+                    {% if post.image %}
+                        <img src="/media/{{ post.image }}" class="post_image">
+                    {% endif %}
+                </div>
                     <div class="comment_list">
                     <h4>Comments:</h4>
                         {% for comm in comment %}

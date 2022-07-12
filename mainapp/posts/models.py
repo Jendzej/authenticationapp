@@ -11,6 +11,7 @@ class ModelPost(models.Model):
     post_content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     user = models.TextField()
+    image = models.ImageField(upload_to='upload/', blank=True)
 
     def save(self, *args, **kwargs):
         """Post's slug configuration"""

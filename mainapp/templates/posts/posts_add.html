@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <div class="adding_page">
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div>
                     {{ form.title.label_tag }}
@@ -15,6 +15,9 @@
                 </div>
                 <div>
                     {{ form.post_content }}
+                </div>
+                <div>
+                    {{ form.image }}
                 </div>
                 <a href="{% url 'posts' %}">
                 <button type="submit" style="width: 6%">
