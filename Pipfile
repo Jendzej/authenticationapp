@@ -5,8 +5,12 @@ name = "pypi"
 
 [packages]
 django = "*"
+django-createsuperuserwithpassword = "*"
+python-dotenv = "*"
+pillow = "*"
 
 [dev-packages]
+pylint = "*"
 
 [requires]
 python_version = "3.10"

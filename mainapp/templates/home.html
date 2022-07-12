@@ -6,25 +6,43 @@
       {% block content %}
       <link rel="stylesheet" href="{% static 'styles/stylesheet.css' %}">
   </head>
-  <body>
-    <div>
-        <img src="{% static 'images/logo.png' %}" class="logo_img"><br>
+
+  <body style="text-align:center;">
+    <img src="{% static 'images/logo.png' %}" class="logo_img"><br>
         {% if user.is_authenticated %}
-        Hi {{ user.username }}!<br>
-        <a href="{% url 'logout' %}">
-            <button>
-                Log out
-            </button>
-        </a>
+            Logged as <i><b>{{ user.username }}</b></i><br>
+        <li>
+            <a href="{% url 'logout' %}">
+                <button class="button_main_page">
+                    Log out
+                </button>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'posts' %}">
+                <button class="button_main_page">
+                    Posts
+                </button>
+            </a>
+        </li>
         {% else %}
-        <p>You are not logged in</p>
-        <a href="{% url 'login' %}">
-            <button>
-                Log in
-            </button>
-        </a>
-        {% endif %}
-        {% endblock %}
-    </div>
+        <li>
+            <a href="{% url 'login' %}">
+                <button class="button_main_page">
+                    Log in
+                </button>
+            </a><br>
+        </li>
+        <li>
+            <a href="{% url 'signup' %}">
+                <button class="button_main_page">
+                    Sign up
+                </button>
+            </a>
+        </li>
+    {% endif %}
+
+    </ul>
+    {% endblock %}
   </body>
 </html>

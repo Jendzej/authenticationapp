@@ -1,0 +1,75 @@
+{% extends 'posts/posts_base.html' %}
+{% load static %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="posts_page">
+    <div>
+            <div class="adding_menu">
+
+                <br><br><h2>Write a post</h2>
+                <a href="{% url 'add' %}">
+                    <button>
+                        Write...
+                    </button>
+                </a>
+
+            </div>
+    </div>
+
+        <div id="single_post">
+
+            {% for post in list_of_posts %}
+                <div class="one_post">
+                    <div class="edit_post">
+                        <a href="{% url 'delete' post.id %}">
+                            <img src="{% static 'images/delete.png' %}" class="edit_images">
+                        </a>
+                        <a href="{% url 'edit' post.id %}">
+                            <img src="{% static 'images/edit.png' %}" class="edit_images">
+                        </a>
+                    </div>
+                    <div class="title_and_author_of_post">
+                        <span><b>{{ post.title }}</b> <a>written by:</a> <i>{{ post.user }}</i></span>
+                    </div>
+
+                    <div class="content_of_post">
+                        {{ post.post_content }}
+                    </div>
+                <div>
+                    {% if post.image %}
+                        <img src="/media/{{ post.image }}" class="post_image">
+                    {% endif %}
+                </div>
+                    <div class="comment_list">
+                    <h4>Comments:</h4>
+                        {% for comm in comment %}
+                            {% if comm.post_id == post.id %}
+                                <div class="single_comm">
+                                    <span><a>{{ comm.name }}:</a> {{ comm.content }}</span>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="add_comment">
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ comment_form.content }}
+                            <input type="hidden" name="post" value="{{ post.id }}">
+
+                            <button class="sub_comm" name="sub_comm">
+                                Submit
+                            </button>
+                        </form>
+                    </div>
+
+
+
+                </div>
+            {% endfor %}
+        </div>
+</div>
+{% endif %}
+
+
+{% endblock %}

@@ -1,27 +1,207 @@
 html {
-    font-family: "Helvetica", "Verdana", sans-serif;
+    list-style-type: none;
+    font-family:"Trebuchet MS", "Trebuchet MS";
     background-color: #E6F2FF;
 }
 
-h2 {
+h2, h4 {
     color: #660033;
 }
 
-button {
+h4 {
+    margin: 20px 5px 10px 10px;
+}
+
+button, .sub_input {
+    font-family:"Trebuchet MS", "Trebuchet MS";
     background-color: #FFE6E6;
     padding: 13px 25px;
     text-align: center;
     cursor: pointer;
     margin: 10px 5px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    /*width: 6%;*/
 }
 
-input {
+input, .post_add_c {
     background-color: #B3D9FF;
     text-align: left;
+    border-radius: 10px;
+    padding: 5px 5px;
+    border: 1px solid #ccc;
+    font-family:"Trebuchet MS", "Trebuchet MS";
 }
 
 .logo_img {
     margin: auto;
+    display: inline;
+    width: 30%;
+    grid-area: header;
+}
+
+.posts_img {
+    grid-column-start: auto;
+    margin: auto;
+    display: grid;
+    width: 20%;
+    grid-area: header;
+}
+
+.posts_page {
+    display: grid;
+    grid-template-columns: minmax(auto, 400px);
+    /*grid-gap: 10px;*/
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.post_add {
+    grid-colmn: 1 / 2;
+    grid-row: 1 / 2;
+    /*width: 40%;*/
+    padding: 15px 20px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+#single_post {
+    grid-column: 2;
+    grid-row: auto;
+    margin: 20px 20px;
+    padding: 20px 20px;
+    /*transform: translate(15%);*/
+}
+
+ul {
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #E6F2FF;
+}
+
+li {
+    /*float: left;*/
     display: block;
-    width: 250px;
+    /*color: white;*/
+    text-align: center;
+    padding: 5px 5px;
+    text-decoration: none;
+}
+
+.one_post {
+    padding: 10px 10px;
+    margin: 5px 5px;
+    border-radius: 10px;
+    border: 1px solid lightblue;
+    width: 70%;
+
+
+}
+
+.not_auth {
+    text-align: center;
+    font-size: 20px;
+}
+
+span b {
+    font-size: large;
+}
+span a {
+    color: gray;
+}
+
+.adding_menu {
+    text-align: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.button_main_page {
+    width: 10%;
+}
+
+.acc_menu {
+    text-align: center;
+}
+
+#id_username, #id_password {
+    width:10%;
+}
+
+.login_page, .signup_page {
+    text-align: center;
+}
+
+.button_acc {
+    width: 6%;
+}
+
+.single_comm {
+    border-bottom: 1px solid lightblue;
+    margin: 5px auto 5px 10px;
+    font-size: 13px;
+
+}
+
+button.sub_comm {
+    padding: 10px 20px;
+}
+
+.comment_post {
+    padding: 10px 200px 10px 10px;
+}
+
+.title_and_author_of_post {
+    margin-bottom: 10px;
+}
+
+.adding_page {
+    text-align: center;
+}
+
+.post_add_t {
+    width: 30%;
+    margin: 20px 20px 20px 20px;
+    text-align: center;
+}
+
+.post_add_c {
+    width: 30%;
+    margin: 20px 20px 20px 20px;
+    height: 200px;
+    line-height: 20px;
+    padding: 10px 10px 10px 10px;
+
+}
+
+.post_delete {
+    margin: auto;
+    padding: 15px 15px;
+    border-radius: 10px;
+    border: 1px solid lightblue;
+    width: 50%;
+    align-self: center;
+}
+
+.delete_ask {
+    text-align: center;
+    font-size: 20px;
+}
+
+.edit_post {
+    float: right;
+    padding: 3px 5px;
+}
+.edit_images {
+    height: 20px;
+}
+
+.post_image {
+    max-height: 300px;
+    max-width: 55%;
 }

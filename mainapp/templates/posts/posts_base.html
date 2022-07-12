@@ -1,0 +1,44 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'styles/stylesheet.css' %}">
+        <link rel="icon" href="{% static 'images/favicon.ico' %}">
+    </head>
+
+    <body>
+        <img src="{% static 'images/logo.png' %}" class="posts_img"><br>
+        {% if user.is_authenticated %}
+            <div class="acc_menu">
+            Logged as <i><b>{{ user.username }}</b></i><br>
+                <a href="../">
+                    <button>
+                        Account
+                    </button>
+                </a>
+            </div>
+            {% else %}
+            <div class="not_auth">
+                If you want to view or public posts, log in or sign up!<br>
+            </div>
+            <div class="acc_menu">
+                <a href="{% url 'login' %}">
+                    <button class="button_main_page">
+                        Log in
+                    </button>
+                </a><br>
+                <a href="{% url 'signup' %}">
+                    <button class="button_main_page">
+                        Sign up
+                    </button>
+                </a>
+            </div>
+        {% endif %}
+        <div id="posts_grp" class="single_post">
+            {% block content %}
+            {% endblock %}
+            {% block post_add %}
+            {% endblock %}
+        </div>
+
+    </body>
+</html>
