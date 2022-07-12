@@ -2,19 +2,19 @@
 {% load static %}
 {% block content %}
     <div class="adding_page">
-            <form method="PUT">
+            <form method="POST">
                 {% csrf_token %}
                 <div>
-                    {{ form.title.label_tag }}
+                    {{ post_form.title.label_tag }}
                 </div>
                 <div>
-                    {{ form.title }}
+                    {{ post_form.title }}
                 </div>
                 <div>
-                    {{ form.post_content.label_tag }}
+                    {{ post_form.post_content.label_tag }}
                 </div>
                 <div>
-                    {{ form.post_content }}
+                    {{ post_form.post_content }}
                 </div>
                 <a href="{% url 'posts' %}">
                 <button type="submit" style="width: 6%">

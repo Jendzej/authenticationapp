@@ -47,34 +47,33 @@ def adding_post(request):
     return render(request, 'posts/posts_add.html', context=form_context)
 
 
-def edit_post(request):
-    """configuration of editing posts page"""
-    if request.method == "PUT":
-        form = PostForm(request.PUT)
-        if form.is_valid():
-            form = form.save(commit=False)
-            form.save()
-            return redirect('posts')
-
-    else:
-        form = PostForm()
-
-    add_form_context = {
-        'form': form
-    }
-    return render(request, 'posts/posts_edit.html', context=add_form_context)
-
-
 def delete_post(request, post_id=None):
     """configuration of deleting posts page"""
     post_to_delete = ModelPost.objects.get(id=post_id)
     if request.method == "POST":
         post_to_delete.delete()
         return redirect('posts')
-    elif "button_no" in str(request):
+    if "button_no" in str(request):
         return redirect('posts')
     context = {
         'post_id': post_id,
         'post_to_delete': post_to_delete
     }
     return render(request, 'posts/posts_delete.html', context)
+
+
+def edit_post(request, post_id=None):
+    """configuration of editing posts page"""
+    post_to_edit = ModelPost.objects.get(id=post_id)
+    if request.method != "POST":
+        post_form = PostForm(instance=post_to_edit)
+
+    else:
+        post_form = PostForm(instance=post_to_edit, data=request.POST)
+        if post_form.is_valid():
+            post_form.save()
+            return redirect('posts')
+    context = {
+        'post_form': post_form
+    }
+    return render(request, 'posts/posts_edit.html', context)
