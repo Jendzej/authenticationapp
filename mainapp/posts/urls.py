@@ -6,5 +6,5 @@ urlpatterns = [
     path('', views.posts_page, name='posts'),
     path('add/', views.adding_post, name='add'),
     path('edit/', views.edit_post, name='edit'),
-    path('delete/<post_id>', views.delete_post, name='delete')
+    path('delete/(?<post_id>[0-9]+)$', views.delete_post, name='delete')
 ]

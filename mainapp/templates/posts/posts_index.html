@@ -51,13 +51,9 @@
                         </form>
                     </div>
                 <div class="delete_post">
-                <form method="delete">
-                    {% csrf_token %}
-                    <input name="post_id" type="hidden" value="{{ post.id }}">
-                    <button type="submit">
+                    <a href="{% url 'delete' post.id %}">
                         Delete post
-                    </button>
-                </form>
+                    </a>
                 </div>
 
 

@@ -178,3 +178,17 @@ button.sub_comm {
     padding: 10px 10px 10px 10px;
 
 }
+
+.post_delete {
+    margin: auto;
+    padding: 15px 15px;
+    border-radius: 10px;
+    border: 1px solid lightblue;
+    width: 50%;
+    align-self: center;
+}
+
+.delete_ask {
+    text-align: center;
+    font-size: 20px;
+}

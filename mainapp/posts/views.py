@@ -67,6 +67,12 @@ def edit_post(request):
 
 def delete_post(request, post_id=None):
     """configuration of deleting posts page"""
-    post_to_delete = PostForm.objects.get(id=post_id)
-    post_to_delete.delete()
-    return render(request, 'posts/posts_index.html')
+    post_to_delete = ModelPost.objects.get(id=post_id)
+    if request.method == "POST":
+        post_to_delete.delete()
+        return redirect('posts')
+    context = {
+        'post_id': post_id,
+        'post_to_delete': post_to_delete
+    }
+    return render(request, 'posts/posts_delete.html', context)

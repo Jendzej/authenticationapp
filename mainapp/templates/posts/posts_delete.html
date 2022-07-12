@@ -1,2 +1,25 @@
 {% extends 'posts/posts_base.html' %}
-{% load %}
+{% load static %}
+
+{% block content %}
+    <div class="delete_ask">
+        <p>Do you really want to delete this post?</p>
+    </div>
+    <div class="post_delete">
+            <div class="title_and_author_of_post">
+                <span><b>{{ post_to_delete.title }}</b> <a>written by:</a> <i>{{ post_to_delete.user }}</i></span>
+            </div>
+
+            <div class="content_of_post">
+                {{ post_to_delete.post_content }}
+            </div>
+    </div>
+    <div style="margin: auto; text-align: center;">
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">
+                Yes
+        </button>
+    </form>
+    </div>
+{% endblock %}
