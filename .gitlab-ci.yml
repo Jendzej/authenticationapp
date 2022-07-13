@@ -1,16 +1,23 @@
-stages:
-    - build
-    - test
+default:
+  image: python:3.10.5-slim
+  cache:
+    paths:
+      - ~/.cache/pip/
+  before_script:
+    - dir
+    - python -m pip install -r requirements.txt
 
-build:
-    stage: build
-    script:
-        - echo "Building"
-        - mkdir build
-        - touch build/info,txt
 
-test:
-    stage: test
-    script: 
-        - echo "Testing"
-        - test -f "build/info.txt"
+migrations:
+  stage: build
+  script:
+    - cd mainapp
+    - python manage.py makemigrations
+    - python manage.py migrate
+    - python manage.py check
+
+django-tests:
+  stage: test
+  script:
+    - cd mainapp
+    - python manage.py test
