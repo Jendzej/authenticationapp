@@ -2,29 +2,27 @@ version: '3'
 services:
   database:
     image: postgres
-    expose:
-      - '5432'
+#    command: CREATE DATABASE authenticationapp
     environment:
+      POSTGRES_DB: authenticationapp
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 'admin'
+      POSTGRES_PASSWORD: admin
     networks:
-      - sieckontenerow
+      - app
     volumes:
       - ./data/db:/var/lib/postgresql/data
   django_app:
     build: .
-    expose:
-    - "8000"
-    environment:
-      POSTGRES_PASSWORD: 'admin'
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
     links:
-      - database:database
+      - database
     networks:
-      - sieckontenerow
+      - app
     depends_on:
       - database
 
 networks:
-  sieckontenerow:
-    driver: bridges
-
+  app:
