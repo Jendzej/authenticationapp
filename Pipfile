@@ -10,6 +10,7 @@ python-dotenv = "*"
 pillow = "*"
 reportlab = "*"
 psycopg2 = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 pylint = "*"

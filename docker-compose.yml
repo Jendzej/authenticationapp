@@ -1,8 +1,30 @@
 version: '3'
 services:
-  django_app:
-    image: 'django_app'
-    ports:
-    - "8000:8000"
+  database:
+    image: postgres
+    expose:
+      - '5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 'admin'
+    networks:
+      - sieckontenerow
     volumes:
-      - ./mainapp/db.sqlite3:/mainapp/db.sqlite3
+      - ./data/db:/var/lib/postgresql/data
+  django_app:
+    build: .
+    expose:
+    - "8000"
+    environment:
+      POSTGRES_PASSWORD: 'admin'
+    links:
+      - database:database
+    networks:
+      - sieckontenerow
+    depends_on:
+      - database
+
+networks:
+  sieckontenerow:
+    driver: bridges
+
