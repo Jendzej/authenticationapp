@@ -23,6 +23,5 @@ services:
       - app
     depends_on:
       - database
-
 networks:
   app:
