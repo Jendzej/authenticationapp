@@ -1,8 +1,23 @@
-before_script:
-  - docker info
+default:
+  image: python:3.10.5-slim
+  cache:
+    paths:
+      - ~/.cache/pip/
+  before_script:
+    - dir
+    - python -m pip install -r requirements.txt
 
-build_image:
+
+migrations:
+  stage: build
   script:
-    - docker compose up --build
-    - docker exec -it authenticationapp-django_app-1 /bin/sh -c "python mainapp/manage.py makemigrations"
-    - docker exec -it authenticationapp-django_app-1 /bin/sh -c "python mainapp/manage.py migrate"
+    - cd mainapp
+    - python manage.py makemigrations
+    - python manage.py migrate
+    - python manage.py check
+
+django-tests:
+  stage: test
+  script:
+    - cd mainapp
+    - python manage.py test
