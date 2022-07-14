@@ -1,9 +1,9 @@
 before_script:
   - docker info
+  - docker compose up database
 
 build_image:
   script:
-    - docker compose up database
     - docker compose up django_app
     - docker exec -it authenticationapp-django_app-1 /bin/sh -c "python mainapp/manage.py makemigrations"
     - docker exec -it authenticationapp-django_app-1 /bin/sh -c "python mainapp/manage.py migrate"
