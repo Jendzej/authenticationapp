@@ -1,2 +1,6 @@
 README.md
 .gitignore
+Pipfile
+Pipfile.lock
+Dockerfile
+.gitlab-ci.yml
