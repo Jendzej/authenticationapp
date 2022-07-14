@@ -1,22 +1,9 @@
-default:
-  image: python:3.10.5-slim
-  cache:
-    paths:
-      - ~/.cache/pip/
-  before_script:
-    - dir
-    - python -m pip install -r requirements.txt
+before_script:
+  - docker info
 
-
-migrations:
-  stage: build
+build_image:
   script:
-    - cd mainapp
-    - python manage.py makemigrations
-    - python manage.py migrate
-    - python manage.py check
-
-django-tests:
-  stage: test
-  script:
-    - python mainapp/manage.py test test_urls
+    - docker compose up database
+    - docker compose up django_app
+    - docker exec -it authenticationapp-django_app-1 /bin/sh -c "python mainapp/manage.py makemigrations"
+    - docker exec -it authenticationapp-django_app-1 /bin/sh -c "python mainapp/manage.py migrate"
