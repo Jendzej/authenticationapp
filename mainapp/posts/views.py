@@ -1,12 +1,16 @@
 """Posts app views configuration"""
+import hashlib
+import io
+import time
+
+from django.http import FileResponse
 from django.shortcuts import render, redirect
+from reportlab.lib.pagesizes import letter
+from reportlab.lib.units import inch
+from reportlab.pdfgen import canvas
+
 from .forms import PostForm, PostComment
 from .models import ModelPost, Comment
-from django.http import FileResponse
-from reportlab.pdfgen import canvas
-import io
-from reportlab.lib.units import inch
-from reportlab.lib.pagesizes import letter
 
 
 def posts_page(request):
@@ -128,5 +132,6 @@ def get_pdf(request, post_id=None):
     c.showPage()
     c.save()
     buf.seek(0)
-
-    return FileResponse(buf, as_attachment=True, filename='doc.pdf')
+    hash = hashlib.sha1()
+    hash.udpate(str(time.time()))
+    return FileResponse(buf, as_attachment=True, filename=f'{hash.hexdigest()}')
