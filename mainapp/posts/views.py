@@ -132,6 +132,5 @@ def get_pdf(request, post_id=None):
     c.showPage()
     c.save()
     buf.seek(0)
-    hash = hashlib.sha1()
-    hash.udpate(str(time.time()))
-    return FileResponse(buf, as_attachment=True, filename=f'{hash.hexdigest()}')
+    name_post = hashlib.md5(str(time.time).encode())
+    return FileResponse(buf, as_attachment=True, filename=f'{name_post.hexdigest()}')
