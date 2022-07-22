@@ -9,8 +9,8 @@ services:
       POSTGRES_PASSWORD: admin
     networks:
       - app
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
+#    volumes:
+#      - ./data/db:/var/lib/postgresql/data
   django_app:
     build: .
     ports:
