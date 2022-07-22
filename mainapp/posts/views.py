@@ -133,4 +133,4 @@ def get_pdf(request, post_id=None):
     c.save()
     buf.seek(0)
     name_post = hashlib.md5(str(time.time).encode())
-    return FileResponse(buf, as_attachment=True, filename=f'{name_post.hexdigest()}')
+    return FileResponse(buf, as_attachment=True, filename=f'{name_post.hexdigest()}.pdf')
